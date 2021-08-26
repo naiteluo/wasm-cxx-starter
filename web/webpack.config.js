@@ -16,6 +16,8 @@ module.exports = {
     devServer: {
         contentBase: "./dist",
         hot: true,
+        port: 9000,
+        host: '0.0.0.0'
     },
     resolve: {
         extensions: [".ts", ".js"],
