@@ -2,7 +2,6 @@
   "name": "typescript-webpack-template",
   "version": "1.0.0",
   "description": "simplest typescript x webpack template for scratch",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack serve",
@@ -31,5 +30,9 @@
     "webpack": "^5.50.0",
     "webpack-cli": "^4.8.0",
     "webpack-dev-server": "^3.11.2"
+  },
+  "dependencies": {
+    "@types/dat.gui": "^0.7.7",
+    "dat.gui": "^0.7.7"
   }
 }

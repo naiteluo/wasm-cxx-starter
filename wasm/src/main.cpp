@@ -4,30 +4,16 @@
 
 #include <iostream>
 #include <emscripten/emscripten.h>
-#include <Eigen/Core>
-#include "GraphicsManager.hpp"
-
-using namespace Eigen;
-
-//int main() {
-//    std::cout << "hi wasm main " << std::endl;
-//    return 0;
-//}
-
-namespace Gm {
-    Gm::GraphicsManager *g_pGraphicsManager = reinterpret_cast<Gm::GraphicsManager * >(new Gm::GraphicsManager);
-}
 
 SDL_Surface *screen;
-Eigen::Matrix4f a = Matrix4f::Identity();
+float r = .8f, g = .4f, b = .3f, a = 1.0f;
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-void say(int argc, char **argv) {
-    std::cout << "hi wasm method" << std::endl;
-    std::cout << "eigen3 4x4 identity matrix print:\n" << a << std::endl;
+void say(char *msg) {
+    std::cout << "[WASM LOG] " << msg << std::endl;
 }
 
 int initGL(int width, int height) {
@@ -43,20 +29,24 @@ int initGL(int width, int height) {
     }
     std::cout << "gles init success. start drawing in cxx" << std::endl;
     std::cout << "canvas size: " << width << "*" << height << std::endl;
-    Gm::g_pGraphicsManager->Initialize(width, height);
-    Gm::g_pGraphicsManager->Clear();
-    Gm::g_pGraphicsManager->Draw();
+    glClearColor(.8f, .4f, .3f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT);
+    glViewport(0, 0, width, height);
     SDL_GL_SwapBuffers();
     return 1;
 }
 
-void updateCameraRotationXY(float x, float y) {
-    return Gm::g_pGraphicsManager->UpdateCameraRotationXY(x, y);
+int updateColor(float _r, float _g, float _b, float _a) {
+    r = _r;
+    g = _g;
+    b = _b;
+    a = _a;
+    return 1;
 }
 
 void tick() {
-    Gm::g_pGraphicsManager->Clear();
-    Gm::g_pGraphicsManager->Draw();
+    glClearColor(r, g, b, a);
+    glClear(GL_COLOR_BUFFER_BIT);
     SDL_GL_SwapBuffers();
 }
 

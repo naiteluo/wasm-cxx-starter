@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <link rel="stylesheet" href="normalize.css"/>
+    <style>
+        .main-title, .main-text {
+            position: absolute;
+            z-index: 2;
+            left: 20px;
+        }
+        .main-text {
+            top: 40px;
+            left: 72px;
+        }
+    </style>
+</head>
+<body>
+<h1 class="main-title">Abyss</h1>
+<p class="main-text">deep into abyss.</p>
+<canvas id="stage" width="900" height="600"></canvas>
+</body>
+</html>

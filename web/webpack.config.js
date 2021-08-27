@@ -5,7 +5,7 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 module.exports = {
     entry: {
-        main: "./main.ts",
+        main: "./src/main.ts",
     },
     output: {
         filename: "[name].bundle.js",
@@ -40,13 +40,13 @@ module.exports = {
         ],
     },
     plugins: [
-        // new CopyWebpackPlugin({
-        //     patterns: [{ from: "", to: "" }],
-        // }),
+        new CopyWebpackPlugin({
+            patterns: [{ from: "public", to: "" }],
+        }),
         new HTMLWebpackPlugin({
-            title: "Typescript x Webpack",
+            title: "WASM module example",
             filename: "index.html",
-            template: "./index.template.html",
+            template: "./public/index.template.html",
             chunks: ["main"],
         }),
     ],
