@@ -309,9 +309,9 @@ void Gm::GraphicsManager::UpdateCameraViewMatrix() {
 
 void Gm::GraphicsManager::UpdateModelMatrix() {
     // Update world matrix to rotate the model
-    //    m_modelRotationX += DEG_RAD_3;
-    //    m_modelRotationY += DEG_RAD_3 / 2;
-    //    m_modelRotationZ += DEG_RAD_3 / 2;
+    m_modelRotationX += DEG_RAD_3;
+    m_modelRotationY += DEG_RAD_3;
+    m_modelRotationZ += DEG_RAD_3;
     Eigen::Affine3f transform = Eigen::Affine3f::Identity();
     transform.rotate(Eigen::AngleAxisf(m_modelRotationX * DEG_TO_RAD, Eigen::Vector3f::UnitX()));
     transform.rotate(Eigen::AngleAxisf(m_modelRotationY * DEG_TO_RAD, Eigen::Vector3f::UnitY()));
