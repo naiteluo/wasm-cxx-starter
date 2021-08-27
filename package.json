@@ -10,7 +10,8 @@
     "build": "tsc && cp src/WasmModule.d.ts src/WasmModule.js dist/",
     "configure:wasm": "emcmake cmake -Hwasm -Bbuild/wasm -DCMAKE_BUILD_TYPE=Release",
     "build:wasm": "cmake --build build/wasm -j8",
-    "start": "jest --config jestconfig.json --watchAll"
+    "start": "jest --config jestconfig.json --watchAll",
+    "web": "cd ./web && yarn dev"
   },
   "repository": {
     "type": "git",
